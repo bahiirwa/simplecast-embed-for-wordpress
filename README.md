@@ -1,4 +1,4 @@
-# Wordpress Simplecast Short Code Plugin
+# Simplecast Wordpress Short Code Plugin
 
 This plugin allows custom Wordpress installed sites to use a short code for embedding Simplecast audio players into their site's content.
 
