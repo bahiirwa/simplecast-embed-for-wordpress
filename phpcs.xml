@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<ruleset name="Simple Cast WordPress Plugin">
+	<ini name="error_reporting" value="E_ALL &#38; ~E_DEPRECATED" />
+	<arg name="extensions" value="php" />
+	<file>.</file>
+	<rule ref="WordPress">
+		<!-- <exclude name="Generic.Arrays.DisallowShortArraySyntax.Found" /> -->
+	</rule>
+
+	<!-- <exclude-pattern>docs</exclude-pattern> -->
+</ruleset>
