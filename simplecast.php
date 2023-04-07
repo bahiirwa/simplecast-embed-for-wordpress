@@ -10,34 +10,34 @@
  */
 
 function simplecast_embed($atts) {
-  if (!isset($atts['src'])) {
-    return '[simplecast-embed error="src attribute needs to be set"]';
-  }
+	if (!isset($atts['src'])) {
+		return '[simplecast-embed error="src attribute needs to be set"]';
+	}
 
-  $response = wp_remote_get('https://api.simplecast.com/oembed?url=' . rawurlencode($atts["src"]));
+	$response = wp_remote_get('https://api.simplecast.com/oembed?url=' . rawurlencode($atts["src"]));
 
-  if (!is_array($response) || isset($response['errors']) || !isset($response['body'])) {
-    return '[simplecast-embed error="Could not find episode"]';
-  }
+	if (!is_array($response) || isset($response['errors']) || !isset($response['body'])) {
+		return '[simplecast-embed error="Could not find episode"]';
+	}
 
-  $jsonData = json_decode($response['body'], true);
+	$jsonData = json_decode($response['body'], true);
 
-  if (!$jsonData || !isset($jsonData['html']) || !is_string($jsonData['html'])) {
-    return '[simplecast-embed error="Could not get iframe html"]';
-  }
+	if (!$jsonData || !isset($jsonData['html']) || !is_string($jsonData['html'])) {
+		return '[simplecast-embed error="Could not get iframe html"]';
+	}
 
-  $whitelist = array(
-    'iframe' => array(
-      'frameborder' => array(),
-      'height' => array(),
-      'scrolling' => array(),
-      'src' => array(),
-      'title' => array(),
-      'width' => array()
-    )
-  );
+	$whitelist = array(
+		'iframe' => array(
+			'frameborder' => array(),
+			'height' => array(),
+			'scrolling' => array(),
+			'src' => array(),
+			'title' => array(),
+			'width' => array()
+		)
+	);
 
-  return wp_kses($jsonData['html'], $whitelist);
+	return wp_kses($jsonData['html'], $whitelist);
 }
 
 add_shortcode('simplecast-embed', 'simplecast_embed');
