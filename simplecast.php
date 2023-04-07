@@ -9,7 +9,8 @@
  * Author URI: https://www.simplecast.com
  */
 
-function simplecast_embed($atts) {
+function simplecast_embed( $atts ) {
+
 	if ( !isset( $atts['src'] ) ) {
 		return '[simplecast-embed error="src attribute needs to be set"]';
 	}
