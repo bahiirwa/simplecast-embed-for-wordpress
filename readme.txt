@@ -1,0 +1,3 @@
+- Add deploy flow.
+- Update the assets.
+- Update the changelog.
