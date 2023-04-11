@@ -5,7 +5,7 @@
  * Author:      Plugin Author Name
  * Author URI:  https://www.simplecast.com
  * Description: Display content using a shortcode to insert in a page or post. eg: [simplecast-embed src="[simplecast/episode/embed/link]"]
- * Version:     0.2.0
+ * Version:     1.0.0
  * License:     GPL-2.0+
  * License URL: http://www.gnu.org/licenses/gpl-2.0.txt
  * text-domain: prefix-plugin-name
