@@ -3,9 +3,9 @@
   "apiVersion": 2,
   "name": "simplecast/embed-block",
   "version": "0.1.0",
-  "title": "Simplecast Podcast Embed for WordPress",
+  "title": "Simplecast Podcast Embed",
   "category": "media",
-  "description": "Simplecast Embed for WordPressDisplay content using a shortcode to insert in a page or post.",
+  "description": "Display Podcast Player insert in a page or post.",
   "supports": {
     "html": false,
     "align": [

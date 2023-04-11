@@ -1,1 +1,0 @@
-{"version":3,"file":"./style-index.css","mappings":";;;AAAA;EACC;AACD,C","sources":["webpack://simplecast-embed-block/./src/style.scss"],"sourcesContent":[".wp-block-simplecast-embed-block {\n\tborder: 1px dotted #a03;\n}\n"],"names":[],"sourceRoot":""}
