@@ -30,7 +30,10 @@ if ( ! class_exists( 'SimpleCastEmbedForWordPress' ) ) {
 			define( 'SIMPLECAST_EMBED_FOR_WP_VERSION', $this->version );
 
 			include_once SIMPLECAST_EMBED_FOR_WP_PATH . '/includes/add-shortcode.php';
-			include_once SIMPLECAST_EMBED_FOR_WP_PATH . '/includes/embed-block.php';
+			
+			if ( function_exists( 'register_block_type' ) ) {
+				include_once SIMPLECAST_EMBED_FOR_WP_PATH . '/includes/embed-block.php';
+			}
 		}
 	}
 }
