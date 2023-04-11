@@ -1,9 +1,9 @@
 <?php
 /**
  * Plugin Name: Simplecast Embed for WordPress
- * Plugin URI:  https://www.simplecast.com
+ * Plugin URI:  https://www.omukiguy.com
  * Author:      Plugin Author Name
- * Author URI:  https://www.simplecast.com
+ * Author URI:  https://www.omukiguy.com
  * Description: Display content using a shortcode to insert in a page or post. eg: [simplecast-embed src="[simplecast/episode/embed/link]"]
  * Version:     1.0.0
  * License:     GPL-2.0+
