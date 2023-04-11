@@ -2,6 +2,8 @@
 
 This plugin allows custom Wordpress installed sites to use a short code for embedding Simplecast audio players into their site's content.
 
+**Credits:** This is a fork of [`simplecastapps/wordpress-plugin`](https://github.com/simplecastapps/wordpress-plugin)
+
 ## Installation
 To install this plugin, please follow one of the installation methods from the Wordpress docs: https://wordpress.org/support/article/managing-plugins/#installing-plugins
 
