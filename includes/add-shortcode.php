@@ -1,14 +1,18 @@
 <?php
 /**
- * Plugin Name: Simplecast Embed
- * Plugin URI: https://www.simplecast.com
- * Description: Display content using a shortcode to insert in a page or post. eg: [simplecast-embed src="[simplecast/episode/embed/link]"]
- * Version: 0.1
- * Text Domain: simplecast-embed
- * Author: Simplecast
- * Author URI: https://www.simplecast.com
+ * Add Embed shortcode.
+ * Adds backward compatibility in that.
+ *
+ * @package SimplecastEmbedForWordPress
  */
 
+ /**
+  * Add shortcode callback.
+  *
+  * @param array $atts Attributes from the shortcode.
+  *
+  * @return void
+  */
 function simplecast_embed( $atts ) {
 
 	if ( !isset( $atts['src'] ) ) {
@@ -21,9 +25,9 @@ function simplecast_embed( $atts ) {
 		return '[simplecast-embed error="Could not find episode"]';
 	}
 
-	$jsonData = json_decode( $response['body'], true );
+	$json_data = json_decode( $response['body'], true );
 
-	if ( ! $jsonData || ! isset( $jsonData['html'] ) || ! is_string( $jsonData['html'] ) ) {
+	if ( ! $json_data || ! isset( $json_data['html'] ) || ! is_string( $json_data['html'] ) ) {
 		return '[simplecast-embed error="Could not get iframe html"]';
 	}
 
@@ -38,7 +42,7 @@ function simplecast_embed( $atts ) {
 		)
 	);
 
-	return wp_kses( $jsonData['html'], $whitelist );
+	return wp_kses( $json_data['html'], $whitelist );
 }
 
 add_shortcode( 'simplecast-embed', 'simplecast_embed' );
