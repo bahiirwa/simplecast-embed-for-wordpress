@@ -6,22 +6,29 @@
  * @package SimplecastEmbedForWordPress
  */
 
- /**
-  * Add shortcode callback.
-  *
-  * @param array $atts Attributes from the shortcode.
-  *
-  * @return void
-  */
+/**
+ * Add shortcode callback.
+ *
+ * @param array $atts Attributes from the shortcode.
+ *
+ * @return string html for the shortcode.
+ */
 function simplecast_embed( $atts ) {
 
-	if ( !isset( $atts['src'] ) ) {
+	if ( ! isset( $atts['src'] ) ) {
 		return '[simplecast-embed error="src attribute needs to be set"]';
 	}
 
-	$response = wp_remote_get( 'https://api.simplecast.com/oembed?url=' . rawurlencode( $atts["src"] ) );
+	$mode = 'false';
+	if ( 1 === $atts['mode'] || $atts['mode'] ) {
+		$mode = 'true';
+	}
 
-	if ( ! is_array( $response ) || isset( $response['errors'] ) || !isset( $response['body'] ) ) {
+	$url = 'https://api.simplecast.com/oembed?url=' . $atts['src'] . '?dark=' . $mode;
+
+	$response = wp_remote_get( $url );
+
+	if ( ! is_array( $response ) || isset( $response['errors'] ) || ! isset( $response['body'] ) ) {
 		return '[simplecast-embed error="Could not find episode"]';
 	}
 
@@ -38,8 +45,8 @@ function simplecast_embed( $atts ) {
 			'scrolling'   => array(),
 			'src'         => array(),
 			'title'       => array(),
-			'width'       => array()
-		)
+			'width'       => array(),
+		),
 	);
 
 	return wp_kses( $json_data['html'], $whitelist );

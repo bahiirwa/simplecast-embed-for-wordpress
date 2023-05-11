@@ -16,6 +16,11 @@
 		"start": "wp-scripts start --webpack-copy-php"
 	},
 	"devDependencies": {
-		"@wordpress/scripts": "^26.1.0"
-	}
+		"@wordpress/scripts": "^26.1.0",
+        "pre-commit": "^1.2.2"
+	},
+	"pre-commit": [
+		"build",
+		"format"
+	]
 }
