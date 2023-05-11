@@ -5,15 +5,13 @@ import { useState, useEffect } from '@wordpress/element';
 
 export default function Edit( { attributes, setAttributes } ) {
     const { link, isDark } = attributes;
-
     let [apiQuery, setApiQuery] = useState(null);
-    const [ hasDarkMode, setDarkMode ] = useState( false );
 
     useEffect(() => {
-        fetch(`https://api.simplecast.com/oembed?url=${link}`)
+        fetch(`https://api.simplecast.com/oembed?url=${link}?dark=${isDark}`)
         .then(response => response.json())
         .then(data => setApiQuery(getIframeSrc(data.html)))
-    },[link])
+    },[link,isDark])
 
     function getIframeSrc(html) {
         const div = document.createElement('div');
@@ -23,7 +21,7 @@ export default function Edit( { attributes, setAttributes } ) {
     }
 
     if ( null !== apiQuery || '' !== apiQuery ) {
-        let linked = `${apiQuery}?dark=${hasDarkMode}`;
+        let linked = `${apiQuery}`;
 
         return (
             <div {...useBlockProps() }>
@@ -41,9 +39,9 @@ export default function Edit( { attributes, setAttributes } ) {
                     <PanelBody title={__('Presentation Settings', 'simplecast-embed-for-wordpress')} initialOpen={false}>
                         <ToggleControl
                             label="Enable Dark Mode"
-                            help={ hasDarkMode ? 'Enable Dark Mode.' : 'Disable Dark Mode.' }
-                            checked={ hasDarkMode }
-                            onChange={ () => { setDarkMode( ( state ) => ! state ); } }
+                            help={ isDark ? 'Enable Dark Mode.' : 'Disable Dark Mode.' }
+                            checked={ isDark }
+                            onChange={ (isDark) => { setAttributes( { isDark } ); } }
                         />
                     </PanelBody>
                 </InspectorControls>
