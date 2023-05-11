@@ -6,13 +6,13 @@
  * @package SimplecastEmbedForWordPress
  */
 
- /**
-  * Add shortcode callback.
-  *
-  * @param array $atts Attributes from the shortcode.
-  *
-  * @return void
-  */
+/**
+ * Add shortcode callback.
+ *
+ * @param array $atts Attributes from the shortcode.
+ *
+ * @return string html for the shortcode.
+ */
 function simplecast_embed( $atts ) {
 
 	if ( ! isset( $atts['src'] ) ) {
