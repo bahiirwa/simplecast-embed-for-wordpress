@@ -28,20 +28,19 @@ export default function Edit( { attributes, setAttributes } ) {
                 <iframe height="200px" width="100%" frameborder="no" scrolling="no" seamless src={linked}></iframe>
                 <InspectorControls>
                     <PanelBody title={__('Podcast Settings', 'simplecast-embed-for-wordpress')} initialOpen={true}>
+                        <ToggleControl
+                            label="Enable Dark Mode"
+                            help={ isDark ? 'Enable Dark Mode.' : 'Disable Dark Mode.' }
+                            checked={ isDark }
+                            onChange={ (isDark) => { setAttributes( { isDark } ); } }
+                        />
+
                         <TextareaControl
                             label={__('Podcast Link', 'simplecast-embed-for-wordpress')}
                             placeholder='https://link.domain'
                             type="url"
                             value={link}
                             onChange={(link) => setAttributes({ link }) }
-                        />
-                    </PanelBody>
-                    <PanelBody title={__('Presentation Settings', 'simplecast-embed-for-wordpress')} initialOpen={false}>
-                        <ToggleControl
-                            label="Enable Dark Mode"
-                            help={ isDark ? 'Enable Dark Mode.' : 'Disable Dark Mode.' }
-                            checked={ isDark }
-                            onChange={ (isDark) => { setAttributes( { isDark } ); } }
                         />
                     </PanelBody>
                 </InspectorControls>
