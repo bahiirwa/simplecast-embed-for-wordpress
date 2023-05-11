@@ -30,11 +30,15 @@ if ( ! class_exists( 'SimpleCastEmbedForWordPress' ) ) {
 		 */
 		public function instance() {
 			// Define constants.
+			if( ! function_exists('get_plugin_data') ){
+				require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+			}
+
 			$plugin_version = get_plugin_data( __FILE__ );
 			define( 'SIMPLECAST_EMBED_FOR_WP_URL', untrailingslashit( plugin_dir_url( __FILE__ ) ) );
 			define( 'SIMPLECAST_EMBED_FOR_WP_PATH', untrailingslashit( plugin_dir_path( __FILE__ ) ) );
 			define( 'SIMPLECAST_EMBED_FOR_WP_BASENAME', plugin_basename( __FILE__ ) );
-			define( 'SIMPLECAST_EMBED_FOR_WP_VERSION', $plugin_version['version'] );
+			define( 'SIMPLECAST_EMBED_FOR_WP_VERSION', $plugin_version['Version'] );
 
 			include_once SIMPLECAST_EMBED_FOR_WP_PATH . '/includes/add-shortcode.php';
 
